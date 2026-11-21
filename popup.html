@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 380px; font: 13px system-ui, sans-serif; margin: 0; padding: 12px; }
+  h1 { font-size: 15px; margin: 0 0 6px; } h2 { font-size: 13px; margin: 14px 0 4px; }
+  label { display: block; margin: 6px 0 2px; font-weight: 600; }
+  input, textarea, select { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #bbb; border-radius: 6px; font: inherit; }
+  textarea { height: 50px; resize: vertical; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8px; }
+  .btns { display: flex; gap: 6px; margin-top: 12px; }
+  button { flex: 1; padding: 8px; border: 0; border-radius: 6px; cursor: pointer; font-weight: 600; background: #e5e7eb; }
+  button.primary { background: #2563eb; color: #fff; }
+  #status { margin-top: 8px; color: #065f46; min-height: 16px; }
+  #newBox { display: none; border: 1px solid #f59e0b; background: #fffbeb; border-radius: 8px; padding: 8px; margin-top: 10px; }
+  .crow { display: flex; gap: 4px; align-items: center; margin: 4px 0; }
+  .crow span { flex: 1; font-size: 12px; } .crow input { flex: 1; } .crow button { flex: 0 0 26px; padding: 4px; }
+  small { color: #666; }
+</style>
+</head>
+<body>
+  <h1>Job Form Autofill</h1>
+  <div class="grid" id="profileFields"></div>
+  <label>Resume <small id="resumeName"></small></label>
+  <input id="resume" type="file" accept=".pdf,.doc,.docx,.rtf,.odt">
+
+  <div class="btns">
+    <button id="save">Save</button>
+    <button id="fill" class="primary">Save &amp; fill page</button>
+  </div>
+  <div class="btns">
+    <button id="learn" title="Fill a form by hand once, then click this to remember the extra answers">Learn from this page</button>
+  </div>
+  <div id="status"></div>
+
+  <div id="newBox">
+    <strong>New fields found on this page</strong><br>
+    <small>Enter answers once; they are reused on other portals.</small>
+    <div id="newFields"></div>
+    <div class="btns"><button id="saveNew" class="primary">Save answers &amp; refill</button></div>
+  </div>
+
+  <details>
+    <summary><h2 style="display:inline">Saved custom answers (<span id="count">0</span>)</h2></summary>
+    <div id="customList"></div>
+  </details>
+  <script src="popup.js"></script>
+</body>
+</html>
